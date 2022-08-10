@@ -47,6 +47,11 @@ def main():
   dict_pieces_w = dict_pieces.copy()
   dict_pieces_b = dict_pieces.copy()
 
+  ## TODO:
+  ## - white value > 0, black value < 0
+  ## - grid -> single array
+  ##    - players' move mask -> single array
+
 if __name__ == "__main__":
   main()
 
