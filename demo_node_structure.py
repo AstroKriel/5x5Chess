@@ -8,9 +8,6 @@ os.system("clear")
 ## ################################
 class Node():
   def __init__(self, data, parent=None):
-    if parent is not None:
-      print(data, parent.data)
-    else: print(data, parent)
     self.data     = data
     self.parent   = parent
     self.children = []
