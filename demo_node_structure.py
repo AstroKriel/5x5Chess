@@ -7,39 +7,41 @@ os.system("clear")
 ## NODE STRUCTURE
 ## ################################
 class Node():
-  def __init__(self, data):
-    self.data = data
+  def __init__(self, data, parent=None):
+    if parent is not None:
+      print(data, parent.data)
+    else: print(data, parent)
+    self.data     = data
+    self.parent   = parent
     self.children = []
 
+def createNode(data, parent=None):
+  n = Node(data, parent)
+  if parent is not None:
+    parent.children.append(n)
+  return n
 
 ## ################################
 ## EXAMPLE TREE
 ## ################################
 def createTree():
   ## level 0 (root)
-  n0 = Node("0")
+  root = createNode("0")
   ## level 1
-  n00 = Node("00")
-  n01 = Node("01")
+  n0 = createNode("00", root)
+  n1 = createNode("01", root)
   ## level 2
-  n000 = Node("000")
-  n011 = Node("011")
-  n012 = Node("012")
-  n013 = Node("013")
+  n00 = createNode("000", n0)
+  n11 = createNode("011", n1)
+  n12 = createNode("012", n1)
+  n13 = createNode("013", n1)
   ## level 3
-  n0120 = Node("0120")
-  n0130 = Node("0130")
+  n120 = createNode("0120", n12)
+  n130 = createNode("0130", n13)
   ## level 4
-  n01300 = Node("01300")
-  ## establish hierarchy
-  n0.children    += [ n00, n01 ]
-  n00.children   += [ n000 ]
-  n01.children   += [ n011, n012, n013 ]
-  n012.children  += [ n0120 ]
-  n013.children  += [ n0130 ]
-  n0130.children += [ n01300 ]
+  n1300 = createNode("01300", n130)
   ## return tree root
-  return n0
+  return root
 
 
 ## ################################
@@ -67,6 +69,7 @@ def printDepthFirst(node, index=0):
 ## ################################
 def main():
   root = createTree()
+  print(" ")
   ## print tree nodes
   print("Breath-First:")
   printBreadthFirst(root)
