@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import os
 os.system("clear")
 
@@ -17,6 +15,7 @@ def createNode(data, parent=None):
   if parent is not None:
     parent.children.append(n)
   return n
+
 
 ## ################################
 ## EXAMPLE TREE
@@ -37,7 +36,7 @@ def createTree():
   n130 = createNode("0130", n13)
   ## level 4
   n1300 = createNode("01300", n130)
-  ## return tree root
+  ## return the tree root
   return root
 
 
@@ -66,7 +65,6 @@ def printDepthFirst(node, index=0):
 ## ################################
 def main():
   root = createTree()
-  print(" ")
   ## print tree nodes
   print("Breath-First:")
   printBreadthFirst(root)
@@ -80,6 +78,5 @@ def main():
 ## ################################
 if __name__ == "__main__":
   main()
-
 
 ## END OF PROGRAM
